@@ -1,23 +1,70 @@
-<!DOCTYPE html>
-<html lang='en'>
+<html lang='ja'>
     <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset='utf-8'>
         <link rel="stylesheet" href="css/style.css">
-        <title>Testだよ</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <title>Home</title>
     </head>
+    <!-- 一番上のヘッダー -->
+    <header>
+        <nav class="site-header sticky-top">
+        <div class="p-2 mb-5 bg-dark text-white">
+            <img src='images/quark_header.png', class="img-fluid", alt="quark_header">
+            <!-- ２番目のヘッダ 目次 -->
+            <div class="container d-flex flex-row justify-content-between bd-highlight">
+                <a class="py-2 d-none d-md-inline-block text-white" href="#">Music</a>
+                <a class="py-2 d-none d-md-inline-block text-white" href="#">DTM</a>
+                <a class="py-2 d-none d-md-inline-block text-white" href="pages/statistic.html">Statistic</a>
+                <a class="py-2 d-none d-md-inline-block text-white" href="#">Programming</a>
+                <a class="py-2 d-none d-md-inline-block text-white" href="#">Other</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 自己紹介とアイコン -->
     <body>
-        <header>
-            <h1>Test</h1>
-            <h3>notion API</h3>
-        </header>
-
         <main>
-            <div id="loading"><img src="/images/MEBIB.gif" alt="loading"></div>
-            <div id="videos"></div>
-        </main>
+            <div class="row mb-2 pt-5 pb-5">
+                <div class="col-md-6">
+                    <img src="images/quark_logo.jpg", class="img-fluid rounded-circle image_display", alt="quark_logo">
+                </div>
+                <div class="col-md-6 pl-5 text-left">
+                    <h1 class="text-decoration-underline">Profile</h1>
+                    <p>名前 : Quark </p>
+                    <p>■自己紹介てきなもの</p>
+                    <p>■自己紹介てきなもの</p>
+                    <p>■自己紹介てきなもの</p>
+                    <p>■自己紹介てきなもの</p>
+                </div>
+            </div>
+            
+        <!-- 記事 -->
+            <div class="text-center pt-3 pb-3"><h1>Contents</h1></div>
+            <div class="text-center">
+                <p class="loading_image">
+                    <div id="loading"><img src="/images/loading.gif" alt="Loading"/></div>
+                </p>
+            </div>
+        <!-- 記事ブロック -->
+            <div class="album py-5 bg-white">
+                <div class="container">
+                    <div id="info" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    </div>
+                </div>
+            </div>
 
-        <script src="js/main.js"></script>
+        </main>
+        
+
+
+        <!-- Optional Javascript -->
+        <!-- jQuery first, then Popper.js then Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+        <!-- main.js read -->
+        <script src='js/main.js'></script>
     </body>
 </html>
