@@ -30,7 +30,9 @@ const addinfoToDom = async () => {
             <div class="col">
                 <div class="card mb-4 shadow-sm ">
                     <div style="text-align: center">
-                        <img src=${info_.Property.files[0].file.url} class="card-img-top" alt=${info_.Name.title[0].plain_text} style="text-align: center">
+                        <a href=${info_.url.rich_text[0].plain_text} target="blank" rel="noopener noreferrer">
+                            <img src=${info_.Property.files[0].file.url} class="card-img-top" alt=${info_.Name.title[0].plain_text} style="text-align: center">
+                        </a>
                     </div>
                         <div class="card-body">
                         <h5 class="card-title">${info_.Name.title[0].plain_text}</h5>
