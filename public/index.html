@@ -14,11 +14,11 @@
             <img src='images/quark_header.png', class="img-fluid", alt="quark_header">
             <!-- ２番目のヘッダ 目次 -->
             <div class="container d-flex flex-row justify-content-between bd-highlight">
-                <a class="py-2 d-none d-md-inline-block text-white" href="#">Music</a>
-                <a class="py-2 d-none d-md-inline-block text-white" href="#">DTM</a>
+                <a class="py-2 d-none d-md-inline-block text-white" href="pages/music.html">Music</a>
+                <a class="py-2 d-none d-md-inline-block text-white" href="pages/dtm/html">DTM</a>
                 <a class="py-2 d-none d-md-inline-block text-white" href="pages/statistic.html">Statistic</a>
-                <a class="py-2 d-none d-md-inline-block text-white" href="#">Programming</a>
-                <a class="py-2 d-none d-md-inline-block text-white" href="#">Other</a>
+                <a class="py-2 d-none d-md-inline-block text-white" href="pages/programming.html">Programming</a>
+                <a class="py-2 d-none d-md-inline-block text-white" href="pages/other/html">Other</a>
             </div>
         </div>
     </header>
@@ -33,25 +33,37 @@
                 <div class="col-md-6 pl-5 text-left">
                     <h1 class="text-decoration-underline">Profile</h1>
                     <p>名前 : Quark </p>
-                    <p>■自己紹介てきなもの</p>
-                    <p>■自己紹介てきなもの</p>
-                    <p>■自己紹介てきなもの</p>
-                    <p>■自己紹介てきなもの</p>
+                    <p>■Ableton Live 10でDTMをしています。ジャンルはHardcore Crossbreed</p>
+                    <p>■データアナリストです。自社アプリの効果検証・データ分析をしています。</p>
+                    <p>■ゆずソフト(その他2次元美少女絵)が好きです。</p>
                 </div>
             </div>
             
-        <!-- 記事 -->
-            <div class="text-center pt-3 pb-3"><h1>Contents</h1></div>
+
+        <!-- latestコンテンツ -->
+            <div class="text-center pt-3 pb-3"><h1>Latest Contents</h1></div>
+            <div class="text-center">
+                <p class="loading_image">
+                    <div id="loading_c"><img src="/images/loading.gif" alt="Loading"/></div>
+                </p>
+            </div>
+            <div class="d-flex .justify-content-md-center flex-shrink-1 bg-white">
+                <div class="container">
+                    <div id="contents" class="list-group list-group-flush border-bottom scrollarea"></div>
+                </div>
+            </div>
+
+
+        <!-- ランダムコンテンツ -->
+            <div class="text-center pt-5 pb-3"><h1>Contents</h1></div>
             <div class="text-center">
                 <p class="loading_image">
                     <div id="loading"><img src="/images/loading.gif" alt="Loading"/></div>
                 </p>
             </div>
-        <!-- 記事ブロック -->
             <div class="album py-5 bg-white">
                 <div class="container">
-                    <div id="info" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    </div>
+                    <div id="info" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"></div>
                 </div>
             </div>
 
