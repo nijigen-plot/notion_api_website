@@ -6,7 +6,7 @@ let loading = false
 // music_contentsのデータを読み込む
 const getMusicContentsFromBackend = async() => {
     loading = true
-    const res = await fetch('http://localhost:5000/music_contents')
+    const res = await fetch('http://54.150.1.203:5000/music_contents')
     const data = await res.json()
     loading = false
     return data
