@@ -5,6 +5,7 @@ const loadingEl_c = document.querySelector('#loading_c')
 let loading = false
 
 
+// ------------------------- ホームページLatestコンテンツ
 // contentsのデータを読み込む
 const getContentsFromBackend = async() => {
     loading = true
@@ -28,22 +29,28 @@ const addContentsToDom = async () => {
     // page_idのURLを取得 res.results[i].properties.URL.url
     // page_idのTagを取得 res.results[i].properties.Tags.select.name
     // page_idの日にちを取得 res.results[i].properties.Column.date.start
-    contents.forEach((content) => {
+    var num = 0
+    for (const i of contents[1]){
+        if (num === 5){
+            break;
+        }
+        num += 1
         const div = document.createElement('div')
         div.innerHTML = `
-        <a href=${content.properties.URL.url} class="list-group-item list-group-item-action py-3 lh-tight" aria-current="true" style="border-width:0cm" target="blank" rel="noopener noreferrer">
+        <a href=${contents[0][i].properties.URL.url} class="list-group-item list-group-item-action py-3 lh-tight" aria-current="true" style="border-width:0cm" target="blank" rel="noopener noreferrer">
             <div class="d-flex w-100 align-items-center justify-content-between">
-                <h3 class="mb-1">・${content.properties.Name.title[0].plain_text}</h3>
-                <p>${content.properties.Column.date.start}</p>
+                <h3 class="mb-1">・${contents[0][i].properties.Name.title[0].plain_text}</h3>
+                <p>${contents[0][i].properties.Column.date.start}</p>
             </div>
-        <div class="badge bg-secondary">${content.properties.Tags.select.name}</div>
+        <div class="badge bg-secondary">${contents[0][i].properties.Tags.select.name}</div>
         </a>
         `
         contentsEl.appendChild(div)
-    })
+    }
 }
 
 
+// --------------------- ホームページコンテンツ
 // infoのデータを読み込む
 const getinfoFromBackend = async() => {
     loading = true
@@ -52,8 +59,6 @@ const getinfoFromBackend = async() => {
     loading = false
     return data
 }
-
-
 const addinfoToDom = async () => {
     const info = await getinfoFromBackend()
 
@@ -91,9 +96,8 @@ const addinfoToDom = async () => {
     })
 }
 
+
 addContentsToDom()
 addinfoToDom()
 
-{/* <h3>${info_.Name.title[0].plain_text}</h3>
-<p><a href=${info_.url.rich_text[0].plain_text} target="blank" rel="noopener noreferrer">See more</a></p>
-<img src=${info_.Property.files[0].file.url} width="400" height="400"></img> */}
+
