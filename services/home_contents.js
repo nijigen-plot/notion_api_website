@@ -39,10 +39,10 @@ module.exports = async function get_database_info() {
       // urls.push(getinfo(pages[i]))
       await getinfo(pages[i])
           .then(res => {
-              console.log('非同期処理成功')
+              // console.log('非同期処理成功')
               urls.push(res)
           }).catch(error => {
-              console.log('非同期処理失敗', error)
+              // console.log('非同期処理失敗', error)
               return null
           })
   }
