@@ -5,7 +5,7 @@ let loading = false
 
 const getDTMContentsFromBackend = async() => {
     loading = true
-    const res = await fetch('http://54.150.1.203:80/dtm_contents')
+    const res = await fetch('http://54.150.1.203:5000/dtm_contents')
     const data = await res.json()
     loading = false
     return data

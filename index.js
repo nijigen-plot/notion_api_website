@@ -6,7 +6,7 @@ const get_dtm_contents = require('./services/dtm_contents')
 const get_stats_contents = require('./services/statistic_contents')
 const get_programming_contents = require('./services/programming_contents')
 const get_other_contents = require('./services/other_contents')
-const PORT = process.env.PORT || 80
+const PORT = process.env.PORT || 5000
 
 const app = express()
 app.use(express.static('public'))

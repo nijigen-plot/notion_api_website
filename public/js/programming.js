@@ -5,7 +5,7 @@ let loading = false
 
 const getProgrammingContentsFromBackend = async() => {
     loading = true
-    const res = await fetch('http://54.150.1.203:80/programming_contents')
+    const res = await fetch('http://54.150.1.203:5000/programming_contents')
     const data = await res.json()
     loading = false
     return data
