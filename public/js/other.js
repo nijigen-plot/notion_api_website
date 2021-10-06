@@ -5,7 +5,7 @@ let loading = false
 
 const getOtherContentsFromBackend = async() => {
     loading = true
-    const res = await fetch('http://54.150.1.203:5000/other_contents')
+    const res = await fetch('http://localhost:5000/other_contents')
     const data = await res.json()
     loading = false
     return data
