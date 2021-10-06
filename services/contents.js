@@ -20,5 +20,6 @@ module.exports = async function get_table_database() {
   })
   const dates_sort = argsort(dates)
   // 配列の最初にdatabaseの記事一覧を、最後に記事ページに入力した日付のargsortを返す
+  console.log('home')
   return [result, dates_sort]
 }
