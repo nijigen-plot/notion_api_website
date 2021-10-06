@@ -77,15 +77,15 @@ const addinfoToDom = async () => {
             <div class="col">
                 <div class="card mb-4 shadow-sm ">
                     <div style="text-align: center">
-                        <a href=${info_.url.rich_text[0].plain_text} target="blank" rel="noopener noreferrer">
-                            <img src=${info_.Property.files[0].file.url} class="card-img-top" alt=${info_.Name.title[0].plain_text} style="text-align: center">
+                        <a href=${info_.properties.url.rich_text[0].plain_text} target="blank" rel="noopener noreferrer">
+                            <img src=${info_.properties.Property.files[0].file.url} class="card-img-top" alt=${info_.properties.Name.title[0].plain_text} style="text-align: center">
                         </a>
                     </div>
                         <div class="card-body">
-                        <h5 class="card-title">${info_.Name.title[0].plain_text}</h5>
+                        <h5 class="card-title">${info_.properties.Name.title[0].plain_text}</h5>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                <a class="btn btn-sm btn-outline-secondary" href=${info_.url.rich_text[0].plain_text} target="blank" rel="noopener noreferrer" role="button" >See More</a>
+                                <a class="btn btn-sm btn-outline-secondary" href=${info_.properties.url.rich_text[0].plain_text} target="blank" rel="noopener noreferrer" role="button" >See More</a>
                             </div>
                         </div>
                     </div>
