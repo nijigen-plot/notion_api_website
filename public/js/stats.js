@@ -6,7 +6,7 @@ let loading = false
 // dtm_contentsのデータを読み込む
 const getStatsContentsFromBackend = async() => {
     loading = true
-    const res = await fetch('http://localhost:5000/stats_contents')
+    const res = await fetch('http://quark-hardcore.com/stats_contents')
     const data = await res.json()
     loading = false
     return data

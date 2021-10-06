@@ -9,7 +9,7 @@ let loading = false
 // contentsのデータを読み込む
 const getContentsFromBackend = async() => {
     loading = true
-    const res = await fetch('http://localhost:5000/contents')
+    const res = await fetch('http://quark-hardcore.com/contents')
     const data = await res.json()
     loading = false
     return data
@@ -54,7 +54,7 @@ const addContentsToDom = async () => {
 // infoのデータを読み込む
 const getinfoFromBackend = async() => {
     loading = true
-    const res = await fetch('http://localhost:5000/info')
+    const res = await fetch('http://quark-hardcore.com/info')
     const data = await res.json()
     loading = false
     return data
