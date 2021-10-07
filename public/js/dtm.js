@@ -5,7 +5,7 @@ let loading = false
 
 const getDTMContentsFromBackend = async() => {
     loading = true
-    const res = await fetch('http://quark-hardcore.com/dtm_contents')
+    const res = await fetch('https://quark-hardcore.com/dtm_contents')
     const data = await res.json()
     loading = false
     return data
