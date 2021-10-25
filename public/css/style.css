@@ -30,3 +30,8 @@ body {
   width: 100%;
   height: auto;
 }
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
