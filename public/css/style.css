@@ -35,3 +35,9 @@ body {
   outline: none;
   box-shadow: none;
 }
+
+#loading_c img {
+  width: 100%;
+  max-width: 441px; /* 画像のオリジナルの最大幅 */
+  height: auto;
+}
