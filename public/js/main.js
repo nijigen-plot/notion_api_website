@@ -31,7 +31,7 @@ const addContentsToDom = async () => {
     // page_idの日にちを取得 res.results[i].properties.Column.date.start
     var num = 0
     for (const i of contents[1]){
-        if (num === 5){
+        if (num === 10){
             break;
         }
         num += 1
