@@ -36,6 +36,12 @@ body {
   box-shadow: none;
 }
 
+#loading img {
+  width: 100%;
+  max-width: 441px; /* 画像のオリジナルの最大幅 */
+  height: auto;
+}
+
 #loading_c img {
   width: 100%;
   max-width: 441px; /* 画像のオリジナルの最大幅 */
