@@ -17,14 +17,6 @@ module.exports = async function get_database_info() {
       database_id: databaseID
   });
   const result = res.results
-  const num = result.length
-  // 取得した配列をシャッフルする
-  for (let i = num - 1; i >= 0; i--){
-      const j = Math.floor(Math.random() * (i + 1));
-      [result[i], result[j]] = [result[j], result[i]]
-  }
-
-  // 先頭から6つ取得する
-  const result6 = result.slice(0, 6)
-  return result6
+  
+  return result
 }
