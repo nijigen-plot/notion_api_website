@@ -65,14 +65,18 @@ const addinfoToDom = async () => {
     if (!loading){
         loadingEl.innerHTML = ''
     }
-
+    let num = 0;
     // forEachは与えられた関数を配列の各要素に対して一度ずつ実行する
     // タイトルテキストを取得 info_.Name.title[0].plain_text
     // URLを取得 info_.url.rich_text[0].plain_text
     // 画像を取得 info_.Property.files[0].file.url
-    info.forEach((info_) => {
-        const div = document.createElement('div')
-        // div.className = 'info'
+    for (const info_ of info) {
+        if (num === 6) {
+            break;
+        }
+        num += 1;
+
+        const div = document.createElement('div');
         div.innerHTML = `
             <div class="col">
                 <div class="card mb-4 shadow-sm ">
@@ -81,19 +85,19 @@ const addinfoToDom = async () => {
                             <img src=${info_.properties.Property.files[0].file.url} class="card-img-top" alt=${info_.properties.Name.title[0].plain_text} style="text-align: center">
                         </a>
                     </div>
-                        <div class="card-body">
+                    <div class="card-body">
                         <h5 class="card-title">${info_.properties.Name.title[0].plain_text}</h5>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
                                 <a class="btn btn-sm btn-outline-secondary" href=${info_.properties.url.rich_text[0].plain_text} target="blank" rel="noopener noreferrer" role="button" >See More</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        `
-        infoEl.appendChild(div)
-    })
+        `;
+        infoEl.appendChild(div);
+    }
 }
 
 
