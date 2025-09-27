@@ -49,6 +49,14 @@
         const bCounts = data.data.B.length;
         const cCounts = data.data.C.length;
 
+        // 所持枚数の総和を計算
+        const allData = [...data.data.S, ...data.data.A, ...data.data.B, ...data.data.C];
+        const totalPieces = allData.reduce((sum, item) => {
+            const count = parseInt(item.count) || 0;
+            return sum + count;
+        }, 0);
+
+        document.getElementById('total-pieces').textContent = totalPieces;
         document.getElementById('total-count').textContent = totalCount;
         document.getElementById('s-count').textContent = sCounts;
         document.getElementById('a-count').textContent = aCounts;
