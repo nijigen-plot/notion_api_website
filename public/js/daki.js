@@ -13,8 +13,8 @@
     let currentTooltipItem = null;
 
     // API Base URL (production domain)
-    const API_BASE = window.location.hostname === 'localhost' 
-        ? 'http://localhost:5000' 
+    const API_BASE = window.location.hostname === 'localhost'
+        ? 'http://localhost:5000'
         : 'https://quark-hardcore.com';
 
     /**
@@ -27,11 +27,11 @@
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const result = await response.json();
-            
+
             if (!result.success) {
                 throw new Error(result.error || 'データの取得に失敗しました');
             }
-            
+
             return result;
         } catch (error) {
             console.error('Error fetching daki data:', error);
@@ -77,18 +77,18 @@
         img.alt = character.name;
         img.loading = 'lazy'; // 遅延読み込み
         img.className = 'loading';
-        
+
         // 画像読み込み完了時の処理
         img.onload = function() {
             this.classList.remove('loading');
         };
-        
+
         // 画像読み込み失敗時の処理
         img.onerror = function() {
             this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgODAgMTAwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSI4MCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiM0NDQiLz48dGV4dCB4PSI0MCIgeT0iNTAiIGZpbGw9IiNhYWEiIGZvbnQtc2l6ZT0iMTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJjZW50cmFsIj5JbWFnZSBOL0E8L3RleHQ+PC9zdmc+';
             this.classList.remove('loading');
         };
-        
+
         img.src = character.imageUrl;
         item.appendChild(img);
 
@@ -111,15 +111,15 @@
      */
     function showTooltip(event, character) {
         console.log('showTooltip called:', character);
-        
+
         // 既存のツールチップを削除
         const existingTooltip = document.querySelector('.custom-tooltip');
         if (existingTooltip) {
             existingTooltip.remove();
         }
-        
+
         currentTooltipItem = event.currentTarget;
-        
+
         const tooltipContent = [
             `<strong>${character.name}</strong>`,
             `出展元: ${character.source}`,
@@ -129,12 +129,12 @@
         ].filter(Boolean).join('<br>');
 
         console.log('Creating new tooltip');
-        
+
         // 新しいツールチップ要素を作成
         const newTooltip = document.createElement('div');
         newTooltip.className = 'custom-tooltip';
         newTooltip.innerHTML = tooltipContent;
-        
+
         // スタイルを直接設定
         Object.assign(newTooltip.style, {
             position: 'fixed',
@@ -153,16 +153,16 @@
             opacity: '1',
             visibility: 'visible'
         });
-        
+
         document.body.appendChild(newTooltip);
-        
+
         // 位置を設定
         const rect = currentTooltipItem.getBoundingClientRect();
         const tooltipRect = newTooltip.getBoundingClientRect();
-        
+
         let left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
         let top = rect.top - tooltipRect.height - 15;
-        
+
         // 画面外調整
         if (left < 10) left = 10;
         if (left + tooltipRect.width > window.innerWidth - 10) {
@@ -171,10 +171,10 @@
         if (top < 10) {
             top = rect.bottom + 15;
         }
-        
+
         newTooltip.style.left = left + 'px';
         newTooltip.style.top = top + 'px';
-        
+
         console.log('Tooltip created at:', { left, top });
     }
 
@@ -203,7 +203,7 @@
 
         tooltip.style.left = left + 'px';
         tooltip.style.top = top + 'px';
-        
+
         console.log('Tooltip positioned at:', { left, top, rect, tooltipRect });
     }
 
@@ -225,7 +225,7 @@
         const tiers = ['S', 'A', 'B', 'C'];
         const tierColors = {
             'S': 'tier-s',
-            'A': 'tier-a', 
+            'A': 'tier-a',
             'B': 'tier-b',
             'C': 'tier-c'
         };
@@ -234,26 +234,26 @@
 
         tiers.forEach(tier => {
             const tierData = data.data[tier] || [];
-            
+
             // Tier行を作成
             const tierRow = document.createElement('div');
             tierRow.className = 'tier-row';
-            
+
             // Tierラベル
             const tierLabel = document.createElement('div');
             tierLabel.className = `tier-label ${tierColors[tier]}`;
             tierLabel.textContent = tier;
-            
+
             // Tierコンテンツ
             const tierContent = document.createElement('div');
             tierContent.className = 'tier-content';
-            
+
             // キャラクターアイテムを追加
             tierData.forEach((character, index) => {
                 const characterItem = createCharacterItem(character, index);
                 tierContent.appendChild(characterItem);
             });
-            
+
             // 空のTierの場合のメッセージ
             if (tierData.length === 0) {
                 const emptyMessage = document.createElement('div');
@@ -262,7 +262,7 @@
                 emptyMessage.textContent = 'このTierにはアイテムがありません';
                 tierContent.appendChild(emptyMessage);
             }
-            
+
             tierRow.appendChild(tierLabel);
             tierRow.appendChild(tierContent);
             tierContainer.appendChild(tierRow);
@@ -286,7 +286,7 @@
      */
     function handleKeyboardNavigation(event) {
         const tierContents = document.querySelectorAll('.tier-content');
-        
+
         tierContents.forEach(content => {
             if (event.key === 'ArrowLeft') {
                 content.scrollBy({ left: -100, behavior: 'smooth' });
@@ -303,28 +303,28 @@
         try {
             // データを取得
             dakiData = await fetchDakiData();
-            
+
             // UI更新
             updateStats(dakiData);
             buildTierList(dakiData);
-            
+
             // 要素の表示切り替え
             loadingElement.style.display = 'none';
             statsElement.style.display = 'block';
             tierContainer.style.display = 'block';
-            
+
             // キーボードイベント
             document.addEventListener('keydown', handleKeyboardNavigation);
-            
+
             // ウィンドウリサイズ時のツールチップ調整
             window.addEventListener('resize', () => {
                 if (currentTooltipItem) {
                     hideTooltip();
                 }
             });
-            
+
             console.log('Dakimakura Tier List loaded successfully:', dakiData);
-            
+
         } catch (error) {
             console.error('Failed to initialize dakimakura tier list:', error);
             showError(error.message);
