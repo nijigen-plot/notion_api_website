@@ -138,7 +138,7 @@
         // スタイルを直接設定
         Object.assign(newTooltip.style, {
             position: 'fixed',
-            background: '#000',
+            background: 'rgba(0, 0, 0, 0.85)',
             color: '#fff',
             padding: '12px',
             borderRadius: '8px',
@@ -148,10 +148,11 @@
             zIndex: '999999',
             pointerEvents: 'none',
             maxWidth: '300px',
-            border: '2px solid #fff',
+            border: '2px solid rgba(255, 255, 255, 0.8)',
             display: 'block',
-            opacity: '1',
-            visibility: 'visible'
+            opacity: '0.7',
+            visibility: 'visible',
+            backdropFilter: 'blur(10px)'
         });
 
         document.body.appendChild(newTooltip);
