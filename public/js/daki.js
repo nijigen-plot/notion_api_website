@@ -85,8 +85,14 @@
         item.appendChild(img);
 
         // ホバーイベント
-        item.addEventListener('mouseenter', (e) => showTooltip(e, character));
-        item.addEventListener('mouseleave', hideTooltip);
+        item.addEventListener('mouseenter', (e) => {
+            console.log('Mouse enter:', character);
+            showTooltip(e, character);
+        });
+        item.addEventListener('mouseleave', () => {
+            console.log('Mouse leave');
+            hideTooltip();
+        });
         item.addEventListener('mousemove', updateTooltipPosition);
 
         return item;
@@ -96,6 +102,14 @@
      * ツールチップを表示する
      */
     function showTooltip(event, character) {
+        console.log('showTooltip called:', character);
+        
+        // 既存のツールチップを削除
+        const existingTooltip = document.querySelector('.custom-tooltip');
+        if (existingTooltip) {
+            existingTooltip.remove();
+        }
+        
         currentTooltipItem = event.currentTarget;
         
         const tooltipContent = [
@@ -106,9 +120,54 @@
             character.comment ? `コメント: ${character.comment}` : ''
         ].filter(Boolean).join('<br>');
 
-        tooltip.innerHTML = tooltipContent;
-        tooltip.style.display = 'block';
-        updateTooltipPosition(event);
+        console.log('Creating new tooltip');
+        
+        // 新しいツールチップ要素を作成
+        const newTooltip = document.createElement('div');
+        newTooltip.className = 'custom-tooltip';
+        newTooltip.innerHTML = tooltipContent;
+        
+        // スタイルを直接設定
+        Object.assign(newTooltip.style, {
+            position: 'fixed',
+            background: '#000',
+            color: '#fff',
+            padding: '12px',
+            borderRadius: '8px',
+            fontSize: '14px',
+            lineHeight: '1.4',
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)',
+            zIndex: '999999',
+            pointerEvents: 'none',
+            maxWidth: '300px',
+            border: '2px solid #fff',
+            display: 'block',
+            opacity: '1',
+            visibility: 'visible'
+        });
+        
+        document.body.appendChild(newTooltip);
+        
+        // 位置を設定
+        const rect = currentTooltipItem.getBoundingClientRect();
+        const tooltipRect = newTooltip.getBoundingClientRect();
+        
+        let left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
+        let top = rect.top - tooltipRect.height - 15;
+        
+        // 画面外調整
+        if (left < 10) left = 10;
+        if (left + tooltipRect.width > window.innerWidth - 10) {
+            left = window.innerWidth - tooltipRect.width - 10;
+        }
+        if (top < 10) {
+            top = rect.bottom + 15;
+        }
+        
+        newTooltip.style.left = left + 'px';
+        newTooltip.style.top = top + 'px';
+        
+        console.log('Tooltip created at:', { left, top });
     }
 
     /**
@@ -136,13 +195,18 @@
 
         tooltip.style.left = left + 'px';
         tooltip.style.top = top + 'px';
+        
+        console.log('Tooltip positioned at:', { left, top, rect, tooltipRect });
     }
 
     /**
      * ツールチップを隠す
      */
     function hideTooltip() {
-        tooltip.style.display = 'none';
+        const existingTooltip = document.querySelector('.custom-tooltip');
+        if (existingTooltip) {
+            existingTooltip.remove();
+        }
         currentTooltipItem = null;
     }
 
