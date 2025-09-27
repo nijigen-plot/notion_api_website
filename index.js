@@ -6,6 +6,7 @@ const get_dtm_contents = require('./services/dtm_contents')
 const get_stats_contents = require('./services/statistic_contents')
 const get_programming_contents = require('./services/programming_contents')
 const get_other_contents = require('./services/other_contents')
+const get_daki_contents = require('./services/daki_contents')
 const PORT = process.env.PORT || 5000
 
 const app = express()
@@ -53,5 +54,10 @@ app.get('/contents', async(req, res) => {
   res.json(contents)
 })
 
-app.listen(PORT, console.log(`Server started on port ${PORT}`))
+// /daki_contentsへdakimakura tier list用のデータを飛ばす
+app.get('/daki_contents', async(req, res) => {
+  const daki_contents = await get_daki_contents()
+  res.json(daki_contents)
+})
 
+app.listen(PORT, console.log(`Server started on port ${PORT}`))
