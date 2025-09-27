@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { generateSignedUrl } = require('./s3_service');
 
 /**
  * JSONLファイルを読み込んでTier Listデータを取得
@@ -15,7 +14,7 @@ async function getDakimakuraContents() {
     const lines = fileContent.trim().split('\n').filter(line => line.trim());
     const dakiData = lines.map(line => JSON.parse(line));
     
-    // S3 URLを署名付きURLに変換
+    // ローカル画像URLに変換
     const processedData = dakiData.map(item => ({
       name: item['キャラクター名'] || '',
       source: item['元ネタ'] || '',
@@ -23,8 +22,8 @@ async function getDakimakuraContents() {
       count: item['所持枚数'] || '1',
       tier: item['Tier'] || 'C',
       comment: item['コメント（あれば）'] || '',
-      imageUrl: generateSignedUrl(item['S3URL']),
-      originalS3Url: item['S3URL']
+      imageUrl: item['DIR'] ? item['DIR'].replace('./images/', '/images/') : '/images/default.jpg',
+      originalPath: item['DIR']
     }));
     
     // Tierごとに分類
