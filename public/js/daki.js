@@ -1,4 +1,4 @@
-// Dakimakura Tier List JavaScript
+// Dakimakura Cover Tier List JavaScript
 (async function() {
     'use strict';
 
